@@ -1,0 +1,453 @@
+<!-- AWP_In_Variable Name='"WEB".BOTON1' -->
+<!-- AWP_In_Variable Name='"WEB".BOTON2' -->
+<!-- AWP_In_Variable Name='"WEB".BOTON3' -->
+<!-- AWP_In_Variable Name='"WEB".BOTON4' -->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="src/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="src/raphael-2.1.4.min.js"></script>
+
+    <script src="src/justgage.js"></script>
+
+    <title>Amcor | Control </title>
+
+</head>
+
+<body>
+
+
+    <div class="contenedor">
+
+        <header class="header">
+            <div class="logo">
+                <img class="img" src="src/logo-amcor.png" alt="">
+            </div>
+            <div class="titulo">
+                <h1>CASETA DE BOMBAS</h1>
+            </div>
+
+        </header>
+
+
+    </div>
+
+
+    <div class="gage">
+        <div class="estructura">
+            <div id="g1"></div>
+            <div class="buttons">
+
+                <div class="button1">
+                    <form id="form1" name="form1" method="post" action="">
+                        <input class="boton start" type="submit" value="START" />
+                        <input type="hidden" name='"WEB".BOTON1' value="1" />
+                    </form>
+                </div>
+                <div class="button2">
+                    <form id="form2" name="form2" method="post" action="">
+                        <input class="boton stop" type="submit" value="STOP" />
+                        <input type="hidden" name='"WEB".BOTON1' value="0" />
+                    </form>
+
+                </div>
+
+                <div class="foco-content">
+                    <div class="bomba1">
+                    <h3>BOMBA 1</h3> 
+                    <label id="bit" class="hidden"></label>
+                    <div class="foco" id="foco"></div>
+                    </div>
+                    <div class="backup1">
+                    <h3>BACKUP 1</h3>
+                    <label id="bit2" class="hidden"></label>
+                    <div class="foco" id="foco2"></div> 
+                </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="estructura">
+            <div id="g2"></div>
+            <div class="buttons">
+                <div class="button1">
+                    <form id="form3" name="form3" method="post" action="">
+                        <input class="boton" type="submit" value="START" />
+                        <input type="hidden" name='"WEB".BOTON2' value="1" />
+                    </form>
+                </div>
+                <div class="button2">
+                    <form id="form4" name="form4" method="post" action="">
+                        <input class="boton stop" type="submit" value="STOP" />
+                        <input type="hidden" name='"WEB".BOTON2' value="0" />
+                    </form>
+                </div>
+               <div class="foco-content">
+                   <div class="bomba2">
+                       <h3>BOMBA 2</h3>
+                <label id="bit3" class="hidden"></label>
+                <div class="foco" id="foco3"></div>
+            </div>
+            <div class="backup2">
+                <h3>BACKUP 2</h3>
+                <label id="bit4" class="hidden"></label>
+                <div class="foco" id="foco4"></div>
+            </div>
+                </div> 
+            </div>
+
+        </div>
+
+        <div class="estructura">
+            <div id="g3"></div>
+            <div class="buttons">
+                <div class="button1">
+                    <form id="form5" name="form5" method="post" action="">
+                        <input class="boton " type="submit" value="START" />
+                        <input type="hidden" name='"WEB".BOTON3' value="1" />
+                    </form>
+                </div>
+                <div class="button2">
+                    <form id="form6" name="form6" method="post" action="">
+                        <input class="boton stop" type="submit" value="STOP" />
+                        <input type="hidden" name='"WEB".BOTON3' value="0" />
+                    </form>
+                </div>
+               <div class="foco-content"> 
+                   <div class="bomba3">
+                   <h3>BOMBA 3</h3>
+                    <label id="bit5" class="hidden"></label>
+                    <div class="foco" id="foco5"></div>
+                </div>
+                <div class="backup3">
+                    <h3>BACKUP 3</h3>
+                    <label id="bit6" class="hidden"></label>
+                    <div class="foco" id="foco6"></div>
+                </div>
+                    </div> 
+            </div>
+        </div>
+
+        <div class="estructura">
+            <div id="g4"></div>
+            <div class="buttons">
+                <div class="button1">
+                    <form id="form7" name="form7" method="post" action="">
+                        <input class="boton" type="submit" value="START" />
+                        <input type="hidden" name='"WEB".BOTON4' value="1" />
+                    </form>
+                </div>
+                <div class="button2">
+                    <form id="form8" name="form8" method="post" action="">
+                        <input class="boton stop " type="submit" value="STOP" />
+                        <input type="hidden" name='"WEB".BOTON4' value="0" />
+                    </form>
+                </div>
+               <div class="foco-content">
+                   <div class="bomba4">
+                       <h3>BOMBA 4</h3>
+                <label id="bit7" class="hidden"></label>
+                <div class="foco" id="foco7"></div>
+            </div>
+            <div class="backup4">
+                <h3>BACKUP 4</h3>
+                <label id="bit8" class="hidden"></label>
+                <div class="foco" id="foco8"></div>
+            </div>
+                </div>
+            </div> 
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var g1, g2, g3, g4;
+            var g1 = new JustGage({
+                id: "g1",
+                value: 0,
+                min: 0,
+                max: 5,
+                title: "PRESION ACETATO",
+                titleFontColor: "#1d3557",
+                label: "BAR",
+                minLabelMinFontSize: "20",
+                maxLabelMinFontSize: "20",
+                labelFontColor: "black",
+                formatNumber: true,
+                pointer: true,
+                decimals: 2
+            });
+
+            var g2 = new JustGage({
+                id: "g2",
+                value: 0,
+                min: 0,
+                max: 5,
+                labelFontColor: "black",
+                title: "PRESION NPA",
+                titleFontColor: "#1d3557",
+                label: "BAR",
+                minLabelMinFontSize: "20",
+                maxLabelMinFontSize: "20",
+                formatNumber: true,
+                pointer: true,
+                decimals: 2
+            });
+
+            var g3 = new JustGage({
+                id: "g3",
+                value: 0,
+                min: 0,
+                max: 5,
+                labelFontColor: "black",
+                title: "PRESION PROPANOL",
+                titleFontColor: "#1d3557",
+                label: "BAR",
+                minLabelMinFontSize: "20",
+                maxLabelMinFontSize: "20",
+                formatNumber: true,
+                pointer: true,
+                decimals: 2,
+
+            });
+
+
+
+
+            var g4 = new JustGage({
+                id: "g4",
+                value: 0,
+                min: 0,
+                max: 5,
+                labelFontColor: "black",
+                title: "PRESION ETANOL",
+                titleFontColor: "#1d3557",
+                label: "BAR",
+                minLabelMinFontSize: "20",
+                maxLabelMinFontSize: "20",
+                formatNumber: true,
+                pointer: true,
+                decimals: 2
+
+            });
+
+
+            $.ajaxSetup({ cache: false });
+            setInterval(function () {
+
+                $.get("counter.html", function (result) {
+                    g1.refresh(parseFloat(result));
+
+                });
+
+
+                $.get("counter2.html", function (result2) {
+                    g2.refresh(parseFloat(result2));
+
+                });
+
+                $.get("counter3.html", function (result3) {
+                    g3.refresh(parseFloat(result3));
+
+                });
+
+                $.get("counter4.html", function (result4) {
+                    g4.refresh(parseFloat(result4));
+
+                });
+
+
+            }, 100);
+        });
+
+        //PARA BOMBA 1
+        $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+            setInterval(function () {
+                $.get("BOMBA1.html", function (result) {
+                    $('#bit').text(result.trim());
+                    const $foco = document.getElementById("foco")
+
+                    if (result == 1) {
+
+                        $foco.classList.remove("off")
+                        $foco.classList.add("on")
+                    } else {
+                        $foco.classList.remove("on")
+                        $foco.classList.add("off")
+                    }
+                });
+
+            }, 200);
+        });
+
+        //PARA BACKUP1
+        $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+            setInterval(function () {
+                $.get("BACKUP1.html", function (result2) {
+                    $('#bit2').text(result2.trim());
+                    const $foco = document.getElementById("foco2")
+
+                    if (result2 == 1) {
+
+                        $foco.classList.remove("off")
+                        $foco.classList.add("onbackup")
+                    } else {
+                        $foco.classList.remove("onbackup")
+                        $foco.classList.add("off")
+                    }
+                });
+
+            }, 200);
+        });
+
+        //PARA BOMBA 2
+        $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+            setInterval(function () {
+                $.get("BOMBA2.html", function (result3) {
+                    $('#bit3').text(result3.trim());
+                    const $foco = document.getElementById("foco3")
+
+                    if (result3 == 1) {
+
+                        $foco.classList.remove("off")
+                        $foco.classList.add("on")
+                    } else {
+                        $foco.classList.remove("on")
+                        $foco.classList.add("off")
+                    }
+                });
+
+            }, 200);
+        });
+
+         //PARA BACKUP2
+         $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+            setInterval(function () {
+                $.get("BACKUP2.html", function (result4) {
+                    $('#bit4').text(result4.trim());
+                    const $foco = document.getElementById("foco4")
+
+                    if (result4 == 1) {
+
+                        $foco.classList.remove("off")
+                        $foco.classList.add("onbackup")
+                    } else {
+                        $foco.classList.remove("onbackup")
+                        $foco.classList.add("off")
+                    }
+                });
+
+            }, 200);
+        });
+
+         //PARA BOMBA 3
+         $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+            setInterval(function () {
+                $.get("BOMBA3.html", function (result5) {
+                    $('#bit5').text(result5.trim());
+                    const $foco = document.getElementById("foco5")
+
+                    if (result5 == 1) {
+
+                        $foco.classList.remove("off")
+                        $foco.classList.add("on")
+                    } else {
+                        $foco.classList.remove("on")
+                        $foco.classList.add("off")
+                    }
+                });
+
+            }, 200);
+        });
+
+         //PARA BACKUP3
+         $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+            setInterval(function () {
+                $.get("BACKUP3.html", function (result6) {
+                    $('#bit6').text(result6.trim());
+                    const $foco = document.getElementById("foco6")
+
+                    if (result6 == 1) {
+
+                        $foco.classList.remove("off")
+                        $foco.classList.add("onbackup")
+                    } else {
+                        $foco.classList.remove("onbackup")
+                        $foco.classList.add("off")
+                    }
+                });
+
+            }, 200);
+        });
+
+         //PARA BOMBA 4
+         $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+            setInterval(function () {
+                $.get("BOMBA4.html", function (result7) {
+                    $('#bit7').text(result7.trim());
+                    const $foco = document.getElementById("foco7")
+
+                    if (result7 == 1) {
+
+                        $foco.classList.remove("off")
+                        $foco.classList.add("on")
+                    } else {
+                        $foco.classList.remove("on")
+                        $foco.classList.add("off")
+                    }
+                });
+
+            }, 200);
+        });
+
+         //PARA BACKUP4
+         $(document).ready(function () {
+            $.ajaxSetup({ cache: false });
+            setInterval(function () {
+                $.get("BACKUP4.html", function (result8) {
+                    $('#bit8').text(result8.trim());
+                    const $foco = document.getElementById("foco8")
+
+                    if (result8 == 1) {
+
+                        $foco.classList.remove("off")
+                        $foco.classList.add("onbackup")
+                    } else {
+                        $foco.classList.remove("onbackup")
+                        $foco.classList.add("off")
+                    }
+                });
+
+            }, 200);
+        });
+
+
+     
+    </script>
+
+
+
+    </div>
+    <!--ACTIVAR FOOTER
+    <footer>
+    <p>&copy Todos los derechos reservados por Amcor</p>
+</footer>-->
+
+</body>
+
+</html>

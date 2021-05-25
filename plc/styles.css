@@ -1,0 +1,161 @@
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #f1faee;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+
+.contenedor{
+    width: min(100%,120rem) ;
+    margin: 0 auto;
+}
+
+
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo{
+    text-emphasis: center;
+     /* fallback for old browsers */
+    border-radius: .3rem;
+    margin-right: 20rem;
+}
+
+.titulo h1{
+    text-align: center;
+    color: black;
+    font-size: 3rem;
+    padding-top: .5rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+.logo img{
+    width: 20rem;
+    height: 7rem;
+}
+
+
+@media(max-width:480px){
+    .header{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo{
+        margin-top: 2rem;
+    }
+
+    .titulo{
+        width: 100%;
+        margin-top: 2rem;
+        margin-left: 20rem;
+    }
+}
+
+.gage{
+	color: black;
+        width: 100%;
+        margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    @media (max-width:470px){
+        .gage{
+            justify-content: center;
+        }
+        
+    }
+
+#g1,#g2,#g3,#g4{
+        width: 300px;
+        height: 260px;
+       
+    }
+
+  
+.buttons{ 
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap : wrap;
+}
+
+.boton{
+    padding: .8rem 3rem;
+    border-radius: .4rem;
+    border: none;
+    color: white;
+    background: #457b9d;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.stop{
+    background: #e63946;
+}
+
+.foco{
+    
+    background: gray;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid black;
+}
+
+.on{
+    background: green;
+}
+
+.onbackup{
+    background: blue;
+}
+
+.off{
+    background: Gray;
+}
+
+/*ACTIVAR FOOTER
+footer{
+    margin-top: 3rem;
+    background: #1D3557;
+    width: 100%;
+    padding: 2rem;
+}
+
+footer p{
+    
+    font-size: 1.4rem;
+    color: white;
+}
+*/
+.hidden{
+    display: none;
+}
+
+.foco-content{
+    margin-top: 2rem;  
+    width  : 100%;
+    display : flex;
+    text-align: center;
+    justify-content: space-evenly;
+   
+}
